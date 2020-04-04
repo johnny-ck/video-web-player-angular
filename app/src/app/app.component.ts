@@ -1,9 +1,9 @@
 import {
   Component,
   ElementRef,
-  ViewChild,
+  HostListener,
   OnDestroy,
-  HostListener
+  ViewChild
 } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
@@ -38,6 +38,7 @@ export class AppComponent implements OnDestroy {
 
   constructor(private sanitizer: DomSanitizer) {}
 
+  @HostListener('window:unload')
   @HostListener('window:beforeunload')
   ngOnDestroy() {
     this.saveProgressToLocalStorage();
